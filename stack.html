@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Stack Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            background-color: red;
+        }
+        
+        .flex-container>div {
+            /*div children of the flex container*/
+            background-color: #f1f1f1;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+        }
+        /* Responsive layout */
+        
+        @media (max-width: 600px) {
+            .flex-container {
+                flex-direction: column;
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <h2>Maheshwar Reddy Goli builds a stack</h2>
+
+    <div class="flex-container border" id="target">
+        <div class="stack border">row item 1</div>
+        <div class="stack border">row item 2</div>
+        <div class="stack border">row item 3</div>
+    </div>
+
+    <div class="border bg-secondary">
+        <p style="color: white;"> Press the button to create an new element of type div and then add it to the container.
+        </p>
+
+        <input id="1" type="text" class="border">
+        <button class="btn btn-danger border" onclick="makeNewDiv()">Push value</button>
+        <button class="btn btn-danger border" onclick="popItem()">Pop</button>
+        <button class="btn btn-danger border" onclick="zap()">Zap values</button>
+    </div>
+</body>
+<script>
+    function makeNewDiv() {
+
+        let element = document.createElement("div")
+
+        let textInput = document.getElementById("1")
+
+        element.innerHTML = textInput.value
+        element.className = "stack"
+
+
+        document.getElementById('target').appendChild(element)
+    }
+
+    function popItem() {
+        var stackItems = document.getElementsByClassName("stack")
+
+        var stackLength = stackItems.length
+
+        if (stackLength > 0)
+            stackItems[stackLength - 1].remove()
+    }
+
+    function zap() {
+        var stackItems = document.getElementsByClassName("stack")
+
+        let textInput = document.getElementById("1").value
+
+        if (stackItems != undefined && stackItems.length > 0) {
+            for (let i = 0; i < stackItems.length; i++) {
+                if (stackItems[i].innerHTML == textInput) {
+                    var itemToBeRemoved = stackItems[i].innerHTML
+                    stackItems[i].remove()
+                    console.log(itemToBeRemoved)
+                    i--
+                }
+            }
+        }
+    }
+</script>
+
+</html>
