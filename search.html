@@ -65,7 +65,7 @@
     <script>
         let ids = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"]
         let triesCount = 0
-        let animalLocation = Math.floor(Math.random() * 25)
+        let animalLocation = 13
 
         function check(position) {
 
@@ -112,10 +112,12 @@
         }
 
         function newGame() {
-            clickCount = 0
-            let animalLocation = Math.random(0, 24)
+            let clickCount = 0
+            animalLocation = Math.random(0, 24)
+            for (let i = 0; i < 24; i++) {
+                document.getElementById(ids[i]).src = "./images/starter.jpg"
+            }
             document.getElementById("tries").innerHTML = "Number of clicks is " + clickCount
-            document.getElementById("distance").innerHTML = "Distance is Unknown"
         }
     </script>
 </body>
