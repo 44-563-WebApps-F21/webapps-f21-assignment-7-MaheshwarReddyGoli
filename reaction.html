@@ -35,29 +35,26 @@
             console.log(myTime)
         }
 
-
         function startTime() {
             var startCount = Math.floor(Math.random() * 10 + 2)
             for (let i = 0; i < startCount; i++) {
                 setTimeout(() => {
-
                     document.getElementById("countdown").innerHTML = "Count: " + i
                 }, (startCount - i) * 1000)
             }
             setTimeout(() => {
                 checkMyTime()
-            }, 3000)
+            }, startCount * 1000)
         }
 
         function checkMyTime() {
-            var input = document.getElementById("target")
-
+            var element = document.getElementById("target")
             if (myTime == undefined)
-                input.innerHTML = "Too Slow"
+                element.innerHTML = "Too Slow"
             else {
                 var buttonTime = Date.now()
                 var difference = buttonTime - myTime
-                input.innerHTML = "Time was " + difference
+                element.innerHTML = "Time was " + difference
             }
         }
     </script>
